@@ -26,19 +26,7 @@ logger = logging.getLogger(__name__)
 # 创建会话对象
 session = requests.Session()
 
-# 设置请求头
-headers = {
-    "sec-ch-ua-platform": "Windows",
-    "Referer": "https://sim.3ue.com/",
-    "sec-ch-ua": "Not(A:Brand;v=99, Microsoft",
-    "x-sw-page": f"https://pro.similarweb.com/#/organicsearch/pageAnalysis/website-keyword-v2/*/999/1m?key={webkey}&pageFilter=%5B%7B%22url%22%3A%22{webkey}%22%2C%22searchType%22%3A%22domain%22%7D%5D&webSource=Total&selectedPageTab=Total",
-    "sec-ch-ua-mobile": "?0",
-    "x-sw-page-view-id": "c47b90dd-9419-49fb-91aa-5e26dae3d1e4",
-    "x-requested-with": "XMLHttpRequest",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0",
-    "accept": "application/json",
-    "content-type": "application/json; charset=utf-8"
-}
+
 
 # 请求参数
 url = "https://sim.3ue.com/widgetApi/WebsiteAnalysisV2/WebsiteAnalysis/Table"
@@ -87,7 +75,19 @@ def send_request(page, name):
     max_attempts = 3
     consecutive_failures = 0
     result = {"status": "error", "message": "未知错误", "data": None}
-
+    # 设置请求头
+    headers = {
+        "sec-ch-ua-platform": "Windows",
+        "Referer": "https://sim.3ue.com/",
+        "sec-ch-ua": "Not(A:Brand;v=99, Microsoft",
+        "x-sw-page": f"https://pro.similarweb.com/#/organicsearch/pageAnalysis/website-keyword-v2/*/999/1m?key={name}&pageFilter=%5B%7B%22url%22%3A%22{name}%22%2C%22searchType%22%3A%22domain%22%7D%5D&webSource=Total&selectedPageTab=Total",
+        "sec-ch-ua-mobile": "?0",
+        "x-sw-page-view-id": "c47b90dd-9419-49fb-91aa-5e26dae3d1e4",
+        "x-requested-with": "XMLHttpRequest",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0",
+        "accept": "application/json",
+        "content-type": "application/json; charset=utf-8"
+    }
     params = {
         "country": "999",
         "to": "2025|03|13",
