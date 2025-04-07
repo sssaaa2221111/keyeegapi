@@ -335,6 +335,7 @@ def fetch_data():
     return jsonify(result)
 
 @app.route('/api/luodi', methods=['GET'])
+@require_api_key
 def fetch_data_luodi():
     """通过 GET 请求触发数据抓取，接收 page 和 name 参数"""
     # page = request.args.get('page', default=None, type=str)
